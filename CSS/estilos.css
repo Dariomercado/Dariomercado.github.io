@@ -297,6 +297,10 @@ header .navbar ul li a:hover{
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .25);
 }
 
+.portfolio .box-container .box:last-child:nth-child(odd){
+    margin-right: auto;
+}
+
 .portfolio .box-container .box .text{
     padding: 2rem;
 }
@@ -442,8 +446,7 @@ header .navbar ul li a:hover{
 }
 
 .top:focus-visible{
-    outline: .3rem solid var(--yellow);
-    outline-offset: .3rem;
+    outline: none;
 }
 
 .whatsapp-float{
