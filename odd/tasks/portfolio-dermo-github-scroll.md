@@ -16,12 +16,14 @@ The portfolio currently shows four project cards and contact details without a G
 - Add the supplied GitHub repositories URL with a Font Awesome icon consistent with contact rows.
 - Replace the rocket image with a gold up-chevron and keep the `#home` destination.
 - Do not publish or push changes.
-- Preserve pre-existing untracked `.atl/` and `img/proyectos/dermoe-shopify.png`.
+- Preserve pre-existing untracked `.atl/`.
+- Include the existing `img/proyectos/dermoe-shopify.png` unchanged so the card image is available after deployment.
 
 ## Authorized scope
 
 - `index.html`
 - `CSS/estilos.css`
+- `img/proyectos/dermoe-shopify.png`
 - `odd/tasks/portfolio-dermo-github-scroll.md`
 
 ## Tasks
@@ -48,7 +50,7 @@ The portfolio currently shows four project cards and contact details without a G
 
 - Route: delegated direct; the three changes span the project/contact markup and the floating control's dedicated styling.
 - Forecast: under 400 authored changed lines; delivery strategy `ask-on-risk`.
-- Status: implementation complete; parent review pending.
+- Status: markup and styling committed as `31b3860`; screenshot inclusion is required before review because the referenced asset was previously untracked.
 - Verification: structural HTML readback confirmed five cards, the requested GitHub link, and the `#home` chevron. Parent review also confirmed the mobile rule preserves chevron centering. Worker and parent `git diff --check` runs exited 0 with no output. No test suite applies to this static HTML/CSS update.
-- Commit: pending.
-- Next step: commit the scoped work unit, record its identity, and follow native review if due.
+- Commit: `31b3860` (`feat(portfolio): add Dermoe project and contact links`); screenshot work unit is identified as `chore(portfolio): include Dermoe project screenshot`.
+- Next step: commit the existing screenshot and follow native review on the complete candidate.
