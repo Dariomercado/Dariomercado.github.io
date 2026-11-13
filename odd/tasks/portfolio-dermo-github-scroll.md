@@ -50,7 +50,8 @@ The portfolio currently shows four project cards and contact details without a G
 
 - Route: delegated direct; the three changes span the project/contact markup and the floating control's dedicated styling.
 - Forecast: under 400 authored changed lines; delivery strategy `ask-on-risk`.
-- Status: markup and styling committed as `31b3860`; screenshot inclusion is required before review because the referenced asset was previously untracked.
-- Verification: structural HTML readback confirmed five cards, the requested GitHub link, and the `#home` chevron. Parent review also confirmed the mobile rule preserves chevron centering. Worker and parent `git diff --check` runs exited 0 with no output. No test suite applies to this static HTML/CSS update.
-- Commit: `31b3860` (`feat(portfolio): add Dermoe project and contact links`); screenshot work unit is identified as `chore(portfolio): include Dermoe project screenshot`.
-- Next step: commit the existing screenshot and follow native review on the complete candidate.
+- Status: all requested portfolio changes and the screenshot are committed locally.
+- Verification: structural readback confirmed five cards, the requested GitHub link, and the `#home` chevron; parent review confirmed mobile centering. Worker and parent `git diff --check` runs exited 0 with no output. No test suite applies to this static HTML/CSS update.
+- Commits: `31b3860` (`feat(portfolio): add Dermoe project and contact links`); `c8d677b` (`chore(portfolio): include Dermoe project screenshot`). This completion record is in `docs(portfolio): record refresh verification`.
+- Native assessment: medium risk; `review_due=false`, reason `under_budget`. Existing `.atl/` untracked files were excluded using the reported inventory; no review lifecycle was due.
+- Next step: changes are ready for the user's ordinary delivery decision; no remote operation was performed.
