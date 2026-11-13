@@ -55,8 +55,8 @@ The portfolio currently shows four project cards and contact details without a G
 
 - Route: delegated direct; this correction changes the collection layout and Dermoe card markup across two source files.
 - Forecast: under 400 authored changed lines; delivery strategy `ask-on-risk`.
-- Status: P4–P5 implemented; the project cards now use a centered grid and Dermoe has its storefront CTA.
+- Status: P4–P5 are complete; the project cards use a centered grid and Dermoe has its storefront CTA. The correction was pushed to `main` in `b9049de`.
 - Verification: structural readback confirmed a centered two-column CSS Grid with a single-column rule at narrow widths, no odd-child margin override, and Dermoe's `Visitar sitio` link to `https://dermoe.myshopify.com/` opening with `noopener noreferrer`. Worker and parent `git diff --check` runs passed. No test suite applies to this static HTML/CSS update.
 - Commits: `31b3860` (`feat(portfolio): add Dermoe project and contact links`); `c8d677b` (`chore(portfolio): include Dermoe project screenshot`); `f8779c2` (`docs(portfolio): record refresh verification`); `dca64c2` (`fix(portfolio): align final project card left`); `7adb804` (`fix(portfolio): use grid for project cards`).
 - Native assessment: medium risk; `review_due=false`, reason `under_budget`. Existing `.atl/` untracked files were excluded and preserved.
-- Next step: commit this final task-record update, assess it, and push to `main` under the user's prior authorization.
+- Next step: no implementation work remains. Netlify should deploy from `main`; deployment status has not been checked.
