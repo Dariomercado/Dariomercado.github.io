@@ -12,10 +12,11 @@ The portfolio currently shows four project cards and contact details without a G
 
 - Add a fifth card using the existing Dermoe screenshot at `img/proyectos/dermoe-shopify.png`.
 - Describe the work as a Shopify project that customizes the Dawn theme.
-- Keep the existing responsive project grid and card pattern.
+- Lay out project cards in a centered two-column CSS Grid; place an odd final card in the first column and collapse to one column on narrow screens.
+- Give Dermoe a `Visitar sitio` link to `https://dermoe.myshopify.com/` using the existing card button style.
 - Add the supplied GitHub repositories URL with a Font Awesome icon consistent with contact rows.
 - Replace the rocket image with a gold up-chevron and keep the `#home` destination.
-- Do not publish or push changes.
+- The user previously authorized pushing this ongoing portfolio update to `main`.
 - Preserve pre-existing untracked `.atl/`.
 - Include the existing `img/proyectos/dermoe-shopify.png` unchanged so the card image is available after deployment.
 
@@ -31,10 +32,14 @@ The portfolio currently shows four project cards and contact details without a G
 - [x] P1 Add the Dermoe Shopify card and screenshot to the project grid.
 - [x] P2 Add the GitHub repositories link to contact details.
 - [x] P3 Replace the floating rocket with a gold up-chevron while retaining its destination.
+- [x] P4 Replace the centering flex layout and odd-child margin override with a responsive two-column grid.
+- [x] P5 Add the Dermoe `Visitar sitio` link to its Shopify URL.
 
 ## Acceptance criteria
 
 - The portfolio presents five project cards in its existing responsive grid.
+- The Dermoe card begins in the same first column as the other first-column cards, without a separate alignment override.
+- The Dermoe card includes a `Visitar sitio` link to `https://dermoe.myshopify.com/`.
 - Dermoe's screenshot has descriptive alternative text and its copy mentions the customized Dawn theme.
 - Contact details include a clickable link to `https://github.com/Dariomercado?tab=repositories` with a GitHub icon.
 - The floating control visibly uses a gold up-chevron and still links to `#home`.
@@ -48,10 +53,10 @@ The portfolio currently shows four project cards and contact details without a G
 
 ## Progress
 
-- Route: delegated direct; the three changes span the project/contact markup and the floating control's dedicated styling.
+- Route: delegated direct; this correction changes the collection layout and Dermoe card markup across two source files.
 - Forecast: under 400 authored changed lines; delivery strategy `ask-on-risk`.
-- Status: all requested portfolio changes and the screenshot are committed locally.
-- Verification: structural readback confirmed five cards, the requested GitHub link, and the `#home` chevron; parent review confirmed mobile centering. Worker and parent `git diff --check` runs exited 0 with no output. No test suite applies to this static HTML/CSS update.
-- Commits: `31b3860` (`feat(portfolio): add Dermoe project and contact links`); `c8d677b` (`chore(portfolio): include Dermoe project screenshot`). This completion record is in `docs(portfolio): record refresh verification`.
-- Native assessment: medium risk; `review_due=false`, reason `under_budget`. Existing `.atl/` untracked files were excluded using the reported inventory; no review lifecycle was due.
-- Next step: changes are ready for the user's ordinary delivery decision; no remote operation was performed.
+- Status: P4–P5 implemented after the user reported the final card alignment was still wrong and requested a site link.
+- Verification: structural readback confirmed a centered two-column CSS Grid with a single-column rule at narrow widths, no odd-child margin override, and Dermoe's `Visitar sitio` link to `https://dermoe.myshopify.com/` opening with `noopener noreferrer`. `git diff --check` exited 0; Git emitted only its LF-to-CRLF working-copy warning for this task document. No test suite applies to this static HTML/CSS update.
+- Commits to date: `31b3860` (`feat(portfolio): add Dermoe project and contact links`); `c8d677b` (`chore(portfolio): include Dermoe project screenshot`); `f8779c2` (`docs(portfolio): record refresh verification`); `dca64c2` (`fix(portfolio): align final project card left`).
+- Native assessment from the previous change: medium risk; `review_due=false`, reason `under_budget`. Existing `.atl/` untracked files were excluded and preserved.
+- Next step: parent spot-checks the correction, then commits, assesses RDD, and pushes under the user's prior authorization.

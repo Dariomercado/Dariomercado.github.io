@@ -277,17 +277,17 @@ header .navbar ul li a:hover{
 }
 
 .portfolio .box-container{
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 34rem);
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 4rem;
     padding: 2rem 0;
 }
 
 .portfolio .box-container .box{
     width: 34rem;
     border-radius: 1rem;
-    margin: 2rem;
+    margin: 0;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -295,10 +295,6 @@ header .navbar ul li a:hover{
     justify-content: flex-start;
     background: #1a1a1a;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .25);
-}
-
-.portfolio .box-container .box:last-child:nth-child(odd){
-    margin-right: auto;
 }
 
 .portfolio .box-container .box .text{
@@ -530,6 +526,9 @@ header .navbar ul li a:hover{
         font-size: 50%;
     }
 
+    .portfolio .box-container{
+        grid-template-columns: minmax(0, 34rem);
+    }
 }
 
 @media (max-width:400px){
