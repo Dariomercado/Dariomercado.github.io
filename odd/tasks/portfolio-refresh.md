@@ -15,10 +15,10 @@ Objetivo: que el portfolio deje de posicionar a Dario como frontend/maquetado y 
 
 | ID | Tarea | Specs | Ruta | Commit |
 | --- | --- | --- | --- | --- |
-| T1 | Higiene de GitHub: descripción y topics en los dos repos | S5 | inline (gh CLI) | — (metadata remota) |
-| T2 | Reescribir home y "sobre mí" | S1 | inline | pendiente |
-| T3 | Reordenar tarjetas y agregar caja-inventario + altoke-pos | S2, S3 | inline | pendiente |
-| T4 | Borrar las 15 imágenes sin uso | S4 | inline | pendiente |
+| T1 | Higiene de GitHub: descripción y topics en los dos repos | S5 | inline (gh CLI) | — (metadata remota, no versionada) |
+| T2 | Reescribir home y "sobre mí" | S1 | inline | `89a0fd8` |
+| T3 | Reordenar tarjetas y agregar caja-inventario + altoke-pos | S2, S3 | inline | `89a0fd8` |
+| T4 | Borrar las imágenes sin uso | S4 | inline | `89a0fd8` |
 | T5 | Verificar en local y push (bloqueada por capturas) | S3 | inline | pendiente |
 | T6 | Auditar `curso-de-bordados` (Windows, Python/Next) | — | inline | pendiente |
 | T7 | Auditar `ecomerce-futbol` (Windows, Mercado Pago, bug de categorías) | — | inline | pendiente |
@@ -42,3 +42,24 @@ Objetivo: que el portfolio deje de posicionar a Dario como frontend/maquetado y 
 **L4** — Advertencia pendiente antes de tocar los repos de Windows: verificar `.env` o credenciales commiteadas en el historial (`ecomerce-futbol` usa Mercado Pago). Si un token quedó en el historial, hay que **rotarlo** en el proveedor, no solo borrar el archivo. No publicar ni enlazar esos repos antes de esa verificación.
 
 **L5** — Bloqueo actual de T5: faltan las capturas `img/proyectos/caja-inventario.png` y `img/proyectos/altoke-pos.png`. Las saca el usuario: `caja-inventario` desde el demo vivo en Vercel con login de demo; `altoke-pos` levantando `pnpm --filter @altoke/web dev`.
+
+**L6** — T1 a T4 completadas. Evidencia:
+- T1: `gh repo edit` sobre `caja-inventario` y `altoke-pos`; verificado con `gh repo list` que ambos tienen descripción y 7 y 9 topics respectivamente. `ecomerce-futbol` sigue con descripción vacía a propósito: fuera de alcance hasta su auditoría (T7).
+- T2: reescritos el `<p>` del home, el `<p>` de "sobre mí" y la grilla de tres columnas (`perfil:Desarrollador full stack`, `stack principal`, `enfoque:Sistemas de gestión, datos y transacciones`). Agregados `meta description` y `og:type/title/description/url` que no existían, para que el link pegado en Workana muestre resumen. Título cambiado a `Dario Mercado | Desarrollador full stack`.
+- T3: dos `article.box` nuevas al inicio de `.box-container`. caja-inventario con dos acciones (demo en Vercel + código); altoke-pos con una (código). Agregada regla `.box .text a + a{ margin-left:.8rem }` porque `.text a` es `inline-block` sin separación entre botones.
+- T4: **14** imágenes sin uso, no 15 (el conteo inicial falló por los nombres con espacios). 3,1 MB. Verificado con `git ls-files -z` para no romper con `Captura de pantalla (7).png`.
+- Verificación: `<article>` 7/7, `<div>` 17/17, `<section>` 4/4; 7 tarjetas; ninguna referencia rota a los archivos borrados; las únicas dos imágenes faltantes son las dos capturas pendientes.
+- Commit `89a0fd8` en rama `feat/portfolio-refresh`, no en `main`, para no publicar las dos imágenes rotas.
+
+**L7** — Resuelto el login de `altoke-pos` (prerrequisito de la captura). Diagnóstico: el front corría en 5173 y el proxy de Vite apuntaba a `localhost:3001`, pero **la API no estaba corriendo y el contenedor `altoke-db` no existía**, así que el proxy no tenía a dónde ir y el navegador mostraba "no se pudo hablar con el servidor". Secuencia aplicada, idéntica a la documentada en `apps/api/README.md`:
+1. `docker compose up -d db --wait` → `altoke-db` sana en `127.0.0.1:5435`.
+2. Migraciones con el rol dueño: `DATABASE_URL=postgres://altoke:altoke@localhost:5435/altoke pnpm db:migrate` → las 8 ya estaban aplicadas.
+3. API con el rol sin ownership: `DATABASE_URL=postgres://altoke_app:altoke_app@localhost:5435/altoke pnpm --filter @altoke/api dev` → escucha en 3001.
+
+Verificación: `GET /salud` 200 y `POST /auth/sesion` 400 (validación) tanto directo en 3001 como por el proxy en `:5173/api/...`. Las rutas reales son `GET /salud`, `POST /auth/sesion`, `DELETE /auth/sesion`, `GET /auth/yo`, `POST /auth/registro`, `GET /sync/eventos`.
+
+**Segunda causa, la que el error tapaba**: no existía ninguna cuenta. El README dice explícitamente "there is no seed"; los 58 usuarios de la base los generaron los tests de integración con emails sintéticos. Hay pantalla de registro (`apps/web/src/components/sesion/PantallaRegistro.tsx`). Se creó una cuenta de demo vía `POST /api/auth/registro` por el proxy: **`dario@altoke.local` / `altoke1234`**, tenant `kiosco-demo`, sucursal `Principal`, rol owner. Login verificado con HTTP 200 y token emitido.
+
+**Nota operativa**: la API quedó corriendo en un job en segundo plano de esta sesión; muere con la sesión. Para levantarla de forma permanente hace falta un terminal propio con los dos comandos de arriba.
+
+

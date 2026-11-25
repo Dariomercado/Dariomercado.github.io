@@ -125,8 +125,9 @@
               Punto de venta con control de stock en Next.js, Prisma y
               PostgreSQL. El stock no puede quedar negativo ni con dos ventas
               simultáneas del último ítem, el dinero se guarda en centavos
-              enteros y el precio se congela en cada línea de venta. API pública
-              con tokens y scopes.
+              enteros y el precio se congela en cada línea de venta. Reportes de
+              ventas por día, cierre de caja y un asistente que consulta los
+              datos por la API pública.
             </p>
             <a
               href="https://caja-inventario-sage.vercel.app"
@@ -155,9 +156,10 @@
             <p>
               Punto de venta para kioscos que sigue cobrando sin internet: cada
               venta, apertura y cierre de turno es un evento en un libro
-              append-only en IndexedDB. Imprime ticket térmico de 80 mm y cierra
-              el turno por denominación de billetes y monedas. Monorepo React +
-              Fastify + PostgreSQL.
+              append-only en IndexedDB. Cobra en efectivo o QR, calcula el vuelto
+              e imprime ticket térmico de 80 mm. El cierre de turno se hace por
+              denominación de billetes y monedas. Monorepo React + Fastify +
+              PostgreSQL.
             </p>
             <a
               href="https://github.com/Dariomercado/altoke-pos"
