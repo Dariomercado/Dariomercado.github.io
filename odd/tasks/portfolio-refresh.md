@@ -62,4 +62,17 @@ Verificación: `GET /salud` 200 y `POST /auth/sesion` 400 (validación) tanto di
 
 **Nota operativa**: la API quedó corriendo en un job en segundo plano de esta sesión; muere con la sesión. Para levantarla de forma permanente hace falta un terminal propio con los dos comandos de arriba.
 
+**L8** — Capturas integradas (commit `ef09699`).
+- Se recibieron 6 archivos en `/mnt/c/Users/DARIO-PC/Downloads`, copiados y normalizados a `img/proyectos/`.
+- **Todas las capturas son 1359×767 (16:9)**, incluidos los 5 archivos ya publicados (1.77–1.85). El CSS anterior (`height: 22rem` sobre tarjetas de 34rem) forzaba 1.55, así que `object-fit: cover` **recortaba ~12% del ancho en las cinco tarjetas ya publicadas**. Corregido a `aspect-ratio: 16 / 9`, que además hace que las nuevas entren sin recorte.
+- Héroe de caja-inventario: pantalla "Registrar venta", que ilustra literalmente la afirmación de la descripción (stock por línea, total calculado en servidor) y trae la garantía transaccional impresa en la propia UI.
+- Héroe de altoke-pos: POS con venta armada, 4 ítems, TOTAL $ 100,10 con IVA incluido. Se **descartó** `altoke-pos-abrir-caja.png`: traía la barra del navegador y estaba casi vacía.
+- Sin referenciar, preparadas para galería: `caja-inventario-2.png` (reportes), `caja-inventario-3.png` (asistente con las tool calls `listar_ventas`/`ver_venta` visibles), `altoke-pos-2.png` (modal de cobro con vuelto).
+- Dato de diseño que habilita la galería sin romper simetría: caja-inventario y altoke-pos son las tarjetas 1 y 2, o sea **la misma fila** del grid de 2 columnas. Una tira de miniaturas en ambas queda pareja; las filas 2 a 4 no la llevan.
+
+**L9** — Decisión del usuario: **una imagen por tarjeta**, sin galería (ni modal ni miniaturas). Las tres capturas extra (`caja-inventario-2.png`, `caja-inventario-3.png`, `altoke-pos-2.png`) **quedan en el repo sin referenciar** a propósito, como material listo para una galería futura. Es una excepción deliberada a S4: no son peso muerto, son assets en espera. Si en algún momento se decide que no se van a usar, se borran y se actualiza esta línea.
+
+**L10** — Pendiente para cerrar T5: el usuario verifica en el navegador antes del push, porque hay un **cambio visual en las cinco tarjetas ya publicadas** (dejan de estar recortadas al 12%). No se hace merge ni push sin esa verificación y sin su decisión explícita, porque publicar no es una acción que el agente tome por su cuenta.
+
+
 
