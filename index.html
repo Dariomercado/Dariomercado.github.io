@@ -4,7 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dario Mercado | Portfolio</title>
+    <title>Dario Mercado | Desarrollador full stack</title>
+    <meta
+      name="description"
+      content="Desarrollador full stack en Argentina. Sistemas de gestión, punto de venta y facturación con Next.js, Node.js y PostgreSQL. Sitios y tiendas para clientes reales."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dario Mercado | Desarrollador full stack" />
+    <meta
+      property="og:description"
+      content="Sistemas de gestión, punto de venta y facturación con Next.js, Node.js y PostgreSQL."
+    />
+    <meta property="og:url" content="https://dario-dev-portfolio.netlify.app/" />
     <link rel="stylesheet" href="/CSS/estilos.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap"
@@ -53,9 +64,10 @@
       <h3>Portfolio profesional</h3>
       <h1>Soy <span>Dario Mercado</span></h1>
       <p>
-        Desarrollo sitios web funcionales, claros y orientados a resultados.
-        Acá presento trabajos reales publicados y un proyecto personal que
-        refleja mi interés por la automatización y el manejo de datos.
+        Construyo sistemas de gestión y aplicaciones web con foco en los datos:
+        transacciones, concurrencia, facturación y reportes. Acá presento
+        sistemas funcionando con su código público, y sitios publicados para
+        clientes reales.
       </p>
       <a href="#about"
         ><button class="btn">sobre mí <i class="fas fa-user"></i></button
@@ -65,24 +77,31 @@
     <section class="about" id="about">
       <h1 class="heading"><span>sobre </span>mí</h1>
       <p>
-        Soy desarrollador web de Argentina. Trabajo en sitios corporativos,
-        soluciones a medida y mejoras sobre proyectos existentes, priorizando
-        claridad técnica, comunicación directa y una implementación prolija. Me
-        interesa que cada proyecto sea útil, consistente y fácil de mantener.
+        Soy desarrollador full stack de Argentina. Construyo sistemas de gestión
+        de punta a punta —punto de venta, inventario, cierre de caja y
+        facturación— sobre Next.js, Node.js y PostgreSQL. Me interesa la parte
+        que no se ve: qué pasa cuando dos personas venden el último ítem al mismo
+        tiempo, cómo se guarda el dinero para que la caja cierre exacta, y cómo se
+        corrige un registro sin borrarlo. También hago sitios corporativos y
+        tiendas para clientes reales.
       </p>
       <div class="row">
         <div class="info">
-          <h3><span>perfil:</span>Desarrollador frontend</h3>
-          <h3><span>tecnologías:</span>HTML, CSS, JavaScript, Next.js</h3>
+          <h3><span>perfil:</span>Desarrollador full stack</h3>
+          <h3>
+            <span>stack principal:</span>TypeScript, Next.js, Node.js, PostgreSQL
+          </h3>
           <h3><span>idioma:</span>Español nativo</h3>
         </div>
         <div class="info">
-          <h3><span>stack complementario:</span>TypeScript, Node.js, SQL</h3>
-          <h3><span>enfoque:</span>Maquetado, integración y mantenimiento web</h3>
-          <h3><span>forma de trabajo:</span>Orden, criterio visual y mejora continua</h3>
+          <h3><span>enfoque:</span>Sistemas de gestión, datos y transacciones</h3>
+          <h3><span>también:</span>Sitios corporativos, Shopify, WordPress</h3>
+          <h3><span>forma de trabajo:</span>Tests, documentación y entregas por hito</h3>
         </div>
         <div class="info">
-          <h3><span>otras herramientas:</span>WordPress, PrestaShop</h3>
+          <h3><span>herramientas:</span>Docker, Prisma, Git, Mercado Pago</h3>
+          <h3><span>testing:</span>Vitest, Playwright</h3>
+          <h3><span>otras bases:</span>SQL directo, IndexedDB, MySQL</h3>
         </div>
       </div>
     </section>
@@ -90,12 +109,68 @@
     <section class="portfolio" id="portfolio">
       <h1 class="heading">mis <span>proyectos</span></h1>
       <p class="section-copy">
-        Selección de trabajos reales publicados y un proyecto personal enfocado
-        en consumo de datos desde una API externa de fútbol y organización de
-        información.
+        Sistemas de gestión funcionando, con su código público, y sitios
+        publicados para clientes reales.
       </p>
 
       <div class="box-container">
+        <article class="box">
+          <img
+            src="/img/proyectos/caja-inventario.png"
+            alt="Captura del sistema de caja e inventario"
+          />
+          <div class="text">
+            <h3>Caja e inventario</h3>
+            <p>
+              Punto de venta con control de stock en Next.js, Prisma y
+              PostgreSQL. El stock no puede quedar negativo ni con dos ventas
+              simultáneas del último ítem, el dinero se guarda en centavos
+              enteros y el precio se congela en cada línea de venta. Reportes de
+              ventas por día, cierre de caja y un asistente que consulta los
+              datos por la API pública.
+            </p>
+            <a
+              href="https://caja-inventario-sage.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              onclick="gtag('event', 'click_repo', { event_category: 'portfolio', event_label: 'caja_inventario_demo' });"
+              >Probar demo</a
+            >
+            <a
+              href="https://github.com/Dariomercado/caja-inventario"
+              target="_blank"
+              rel="noreferrer"
+              onclick="gtag('event', 'click_repo', { event_category: 'portfolio', event_label: 'caja_inventario_codigo' });"
+              >Ver código</a
+            >
+          </div>
+        </article>
+
+        <article class="box">
+          <img
+            src="/img/proyectos/altoke-pos.png"
+            alt="Captura del punto de venta AlToke"
+          />
+          <div class="text">
+            <h3>AlToke</h3>
+            <p>
+              Punto de venta para kioscos que sigue cobrando sin internet: cada
+              venta, apertura y cierre de turno es un evento en un libro
+              append-only en IndexedDB. Cobra en efectivo o QR, calcula el vuelto
+              e imprime ticket térmico de 80 mm. El cierre de turno se hace por
+              denominación de billetes y monedas. Monorepo React + Fastify +
+              PostgreSQL.
+            </p>
+            <a
+              href="https://github.com/Dariomercado/altoke-pos"
+              target="_blank"
+              rel="noreferrer"
+              onclick="gtag('event', 'click_repo', { event_category: 'portfolio', event_label: 'altoke_codigo' });"
+              >Ver código</a
+            >
+          </div>
+        </article>
+
         <article class="box">
           <img
             src="/img/proyectos/coldflex-portfolio.png"

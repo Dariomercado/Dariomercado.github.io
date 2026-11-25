@@ -321,6 +321,9 @@ header .navbar ul li a:hover{
     background: var(--yellow);
     color: #111;
 }
+.portfolio .box-container .box .text a + a{
+    margin-left: .8rem;
+}
 
 .portfolio .box-container .box .text p{
     color: #ddd;
@@ -331,9 +334,12 @@ header .navbar ul li a:hover{
 }
 
 .portfolio .box-container .box img{
-    height: 22rem;
     width: 100%;
+    /* Las capturas son 16:9. Con `height` fija el `cover` recortaba un 12% del ancho
+       y se comía los bordes de la pantalla capturada. */
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    display: block;
 }
 
 .portfolio .box-container .box:hover img{
