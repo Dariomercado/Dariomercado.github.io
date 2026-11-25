@@ -183,17 +183,17 @@ header .navbar ul li a:hover{
 }
 
 .about .row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    /* minmax(0, 1fr) y no `1fr`: un `h3` largo sin espacios no debe poder
+       empujar la columna más allá del ancho del contenedor. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 1rem 3rem;
     padding: 1rem 0;
 }
 
 .about .row .info{
-    flex: 1 1 48rem;
     padding: 2rem 1rem;
-    padding-left: 6rem;
 }
 
 .about .row .info h3{
@@ -518,6 +518,9 @@ header .navbar ul li a:hover{
      body{
          padding: 0;
      }
+     .about .row{
+         grid-template-columns: repeat(2, minmax(0, 1fr));
+     }
      .top{
         position: fixed;
         bottom: 9rem;
@@ -534,6 +537,10 @@ header .navbar ul li a:hover{
 
     .portfolio .box-container{
         grid-template-columns: minmax(0, 34rem);
+    }
+
+    .about .row{
+        grid-template-columns: minmax(0, 1fr);
     }
 }
 

@@ -74,5 +74,14 @@ Verificación: `GET /salud` 200 y `POST /auth/sesion` 400 (validación) tanto di
 
 **L10** — Pendiente para cerrar T5: el usuario verifica en el navegador antes del push, porque hay un **cambio visual en las cinco tarjetas ya publicadas** (dejan de estar recortadas al 12%). No se hace merge ni push sin esa verificación y sin su decisión explícita, porque publicar no es una acción que el agente tome por su cuenta.
 
+**L11** — Publicado y verificado visualmente. El usuario aprobó y autorizó merge + push.
+- `git merge --no-ff feat/portfolio-refresh` a `main`, push `37d4393..1ce6cdd`. Netlify publicó: se confirmó por HTTP que el HTML publicado ya contiene "Desarrollador full stack", `caja-inventario.png`, `altoke-pos.png` y el link al demo de Vercel.
+- Los PNG nuevos entraron con modo `100755` (venían del montaje de Windows); normalizados a 644 en el commit `1ce6cdd`.
+- **Método de QA visual descubierto**: el agente sí tiene ojos para imágenes (así se revisaron las 6 páginas del PDF y se eligieron las capturas), pero no había navegador que renderizara HTML. Está en `/mnt/c/Program Files/Google/Chrome/Application/chrome.exe`: se puede lanzar en modo headless desde WSL y leer el PNG resultante. WSL2 enruta `localhost` desde Windows, así que también sirve contra el server local de `python3 -m http.server`.
+- **Falso positivo**: la primera captura a 1440×1250 parecía mostrar texto desbordado a la derecha; era el borde de la sección a esa altura. Con captura completa no hay desborde.
+- **Bug encontrado por la captura**: el subtítulo del sidebar seguía diciendo "Desarrollador web". Corregido en `4cdf6cb` y pusheado. Está arriba del pliegue y visible en todas las secciones, así que era el peor lugar para dejar el posicionamiento viejo.
+- Nota de procedimiento: para la captura completa se appendió temporalmente `section{min-height:auto}` al CSS local (las secciones son `100vh` y a ventana alta se expanden, impidiendo una foto del flujo completo). Se revirtió antes de commitear; `git status` del CSS quedó limpio.
+- **Pulido opcional pendiente**: la grilla de `.about .row` renderiza los tres bloques como 2 + 1, dejando un hueco bajo la segunda columna. Se arregla con `display:grid; grid-template-columns: repeat(3, 1fr)`, pero no se tocó porque el usuario ya había aprobado el aspecto.
+
 
 
