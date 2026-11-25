@@ -321,6 +321,9 @@ header .navbar ul li a:hover{
     background: var(--yellow);
     color: #111;
 }
+.portfolio .box-container .box .text a + a{
+    margin-left: .8rem;
+}
 
 .portfolio .box-container .box .text p{
     color: #ddd;
